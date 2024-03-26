@@ -1,0 +1,58 @@
+<section class="pt-0">
+    <div class="container">
+        <div class="row g-4 g-sm-5">
+            <!-- Adv -->
+            <div class="col-lg-8 col-xl-6">
+                <div class="card p-0 h-100 position-relative">
+                    <img src="../assets/images/slide-2.png" style="object-fit: cover; width: 100%; height: 100%;" alt="" class="img-fluid position-absolute">
+                    <div class="card-body p-5 mb-8 position-absolute ">
+                        <span class="bg-dark text-white rounded fw-semibold small px-3 py-2">New Arrival</span>
+                        <h4 class="text-dark my-4">Powerful performance. <br> Versatile design.</h4>
+                        <a class="btn btn-lg btn-outline-dark icon-link icon-link-hover mb-0 text-secondary" href="#">Shop now<i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            
+
+            <!-- Product item -->
+            <div class="col-sm-6 col-lg-4 col-xl-3" *ngFor="let item of productHome">
+                <div class="card border bg-transparent overflow-hidden p-0 h-100">
+                    <!-- Overlay -->
+                    <div class="position-absolute top-0 start-0 p-3">
+                        <!-- <span class="badge text-bg-danger">30% off</span> -->
+                    </div>
+
+                    <!-- Image -->
+                    <div class="card-header bg-light rounded m-2">
+                        <img src="{{item.imageUrl}}" width="100%" alt="">
+                    </div>
+
+                    <!-- Card body -->
+                    <div class="card-body pb-0">
+                        <!-- Title -->
+                        <h6 class="card-title"><a [routerLink]="['/product-details', item.id]"class="stretched-link text-secondary text-decoration-none">{{item.productName}}</a></h6>
+                        <!-- Badge and price -->
+                        <ul class="list-inline">
+                            <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                            <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                            <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                            <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                            <li class="list-inline-item me-0 small"><i class="fas fa-star-half-alt text-warning"></i></li>
+                        </ul>
+                    </div>
+
+                    <!-- Card footer -->
+                    <div class="card-footer bg-transparent d-flex justify-content-between align-items-center pt-0">
+                        <div class="d-flex align-items-center gap-2 justify-content-center">
+                            <p class="fw-bold text-success mb-0">{{item.price}}</p>
+                            <!-- <small class="text-decoration-line-through">$180.00</small> -->
+                        </div>
+                        <button class="btn btn-dark mb-0 z-index-2" [disabled]="InStock<1" (click)="Add()"><i class="bi bi-cart"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>

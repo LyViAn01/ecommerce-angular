@@ -1,0 +1,96 @@
+<section class="pt-0">
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-lg-8 mb-6 mb-lg-0">
+                <!-- Cart content -->
+                <form class="bg-transparent">
+                    <!-- Card header -->
+                    <div class="card-header bg-transparent d-flex justify-content-between align-items-center border-bottom px-0 pt-0">
+                        <!-- Title & button -->
+                        <h5 class="mb-0">{{ItemCount()}} products</h5>
+                        <button class="btn btn-sm btn-danger mb-2" (click)="DeleteAll()"><i class="bi bi-x-lg me-1"></i>Clear cart</button>
+                    </div>
+
+                    <!-- Card body -->
+                    <div class="card-body px-0" *ngFor="let item of cartList;let i=index">
+                        <div class="row align-items-xl-center">
+                            <!-- Image -->
+                            <div class="col-5 col-md-2">
+                                <div class="bg-light p-2 rounded-2">
+                                    <img src="{{item.ImageUrl}}" width="100px" alt="">
+                                </div>
+                            </div>
+
+                            <div class="col-7 col-md-10">
+                                <div class="row g-3 g-sm-4">
+                                    <!-- Content -->
+                                    <div class="col-xl-5">
+                                        <!-- Product detail START -->
+                                        <h5 class="mb-1"><a href="#" class="text-dark text-decoration-none">{{item.Name}}</a></h5>
+                                        <!-- List -->
+                                        <ul class="nav nav-divider small align-items-center mt-1 text-secondary">
+                                            <li class="nav-item">Color: Midblue</li>
+                                        </ul>
+                                    </div>
+        
+                                    <!-- Select -->
+                                    <div class="col-sm-6 col-md-4 col-xl-2">
+                                        Quantity: {{item.Quantity}}
+                                    </div>
+    
+                                    <!-- Price -->
+                                    <div class="col-sm-6 col-md-4 col-xl-3 text-md-center">
+                                        <h5 class="mb-0">{{item.Price | currency:" "}} đ</h5>
+                                    </div>
+
+                                    <!-- Button -->
+                                    <div class="col-sm-6 col-md-4 col-xl-2 text-md-center">
+                                        <button class="btn text-danger" (click)="Remove(i)"><i class="bi bi-x-lg"></i><span class="small">Remove</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </form>                
+            </div>
+            
+            <!-- Right side START -->
+            <div class="col-lg-4 ps-xl-6">
+                <!-- Summary -->
+                <div class="card p-4">
+                    <h5 class="">Total</h5>
+                    <!-- Card body -->
+                    <div class="card-body p-0 pb-3 mt-2">
+                        <ul class="list-group list-group-borderless">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>Subtotal</span>
+                                <span class="heading-color fw-semibold mb-0">{{ItemSum()|currency:" "}} đ</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>Service Charge</span>
+                                <span class="heading-color fw-semibold mb-0">50000 đ</span>	
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>Tax</span>
+                                <span class="heading-color fw-semibold mb-0">10000 đ</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Card footer -->
+                    <div class="card-footer bg-transparent border-top p-0 pt-3">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <span class="heading-color fw-normal">Payable Now</span>
+                            <span class="h6 mb-0">{{ItemSum()+50000+10000|currency:" "}} đ</span>
+                        </div>
+
+                        <!-- Button -->
+                        <div class="d-grid"><a href="#" class="btn btn-lg btn-primary mb-0">Continue to Checkout</a></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right side END -->
+        </div>
+    </div>
+</section>

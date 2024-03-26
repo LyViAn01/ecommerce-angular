@@ -1,0 +1,104 @@
+
+<section>
+    <div class="container">
+            <div class="row mt-5">
+                <!-- Slider items -->
+                <div class="col-md-5 mt-5">
+                    <a class="w-100 h-100" data-glightbox data-gallery="gallery" href="./image/image/2.jpg">
+                        <div class="overflow-hidden">
+                            <!-- Image -->
+                            <img [src]="productDetail?.imageUrl" width="70%"  class="rounded-3" alt="">
+
+                        </div>
+                    </a>
+                </div>
+
+
+
+                <!-- Product detail -->
+                <div class="col-md-7 ps-md-6">
+                    <!-- <div class="badge text-bg-dark mb-3">Technology</div> -->
+                    <!-- Title -->
+                    <h1 class="h2 mb-4">{{productDetail?.productName}}</h1>
+
+                    <!-- Rating list -->
+                    <div class="d-flex align-items-center flex-wrap mb-4">
+                        <div class="crop text-warning" [style.width.px]="(productDetail?.starRating!*90)/5">
+                            <div style="width: 90px;">
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+                        </div>
+                        <span class="text-secondary opacity-3 mx-2 mx-sm-3">|</span>
+                        <a href="#" class="heading-color text-primary-hover mb-0">345 reviews</a>
+                        <span class="text-secondary opacity-3 mx-2 mx-sm-3">|</span>
+                        <span>86 sold</span>
+                    </div>
+
+                    <!-- Price -->
+                    <h4 class="text-success mb-4">{{ productDetail?.price | currency:'VND: '}}</h4>
+
+                    <!-- Storage choice -->
+
+                    <div class="d-flex align-items-center gap-1 gap-sm-3 flex-wrap mt-2 mb-4">
+                        <span class="d-block">Memory storage:</span>
+                        <!-- First button -->
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" checked>
+                        <label class="btn btn-sm btn-light border btn-primary-soft-check mb-0" for="btnradio1">256
+                            GB</label>
+                        <!-- Second button -->
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2">
+                        <label class="btn btn-sm btn-light border btn-primary-soft-check mb-0" for="btnradio2">512
+                            GB</label>
+                        <!-- Third button -->
+                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3">
+                        <label class="btn btn-sm btn-light border btn-primary-soft-check mb-0" for="btnradio3">1
+                            TB</label>
+                    </div>
+
+                    <!-- Color choice -->
+                    <div class="color-check-radio d-flex align-items-center gap-3 mt-2 mb-4">
+                        <span class="d-block">Select color:</span>
+                        <div>
+                            <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                id="flexRadioDefault1" style="background-color: #9a0a0a;">
+                            <label class="form-check-label" for="flexRadioDefault1"></label>
+
+                            <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                id="flexRadioDefault2" style="background-color: #32C7F5;">
+                            <label class="form-check-label" for="flexRadioDefault2"></label>
+
+                            <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                id="flexRadioDefault3" style="background-color: #F7C32E;">
+                            <label class="form-check-label" for="flexRadioDefault3"></label>
+
+                            <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                id="flexRadioDefault4" checked style="background-color: #333369;">
+                            <label class="form-check-label" for="flexRadioDefault4"></label>
+                        </div>
+                    </div>
+
+                    <!-- Quantity -->
+                    <div class="d-flex align-items-center gap-3 mt-2 mb-4">
+                        <!-- <span class="d-block">Select quantity:</span>
+                        <input type="number" class="form-control" style="width: 80px;" name="" id=""> -->
+                    </div>
+
+                    <p class="mb-4">{{ productDetail?.description}}</p>
+
+                    <!-- Button -->
+                    <div class="d-grid">
+                        <button class="btn btn-primary mb-0 w-100" [disabled]="InStock<1" (click)="Add()">
+                            <i class="bi bi-cart2 me-2"></i>Add to Cart</button>
+                        <p class="mb-0 mt-2 text-end small"><i
+                                class="bi bi-question-circle-fill text-primary me-2"></i>Need help? <a
+                                href="contact-v1.html" class="mb-0">Chat Now</a></p>
+                    </div>
+
+                </div>
+            </div>
+    </div>
+</section>

@@ -1,0 +1,110 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
+<header class="header-sticky header-absolute mb-5">
+  <nav class="navbar navbar-expand-sm navbar-dark">
+    <!--Brand --><a class="navbar-brand" href="#"><img class="brand-logo" routerLink="/" src=" /assets/images/logo.png" height="100px"
+        alt="logo" aria-hidden="true"></a>
+    <ul class="navbar-nav">
+      <li class="nav-item active"><a class="nav-link text-dark" routerLink="/">Home</a></li>
+      <!-- <li class="nav-item active"><a class="nav-link text-dark" routerLink="/product-all">Product</a></li> -->
+      <li class="nav-item active"><a class="nav-link text-dark" routerLink="/list">Product list</a></li>
+    </ul>
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item active" style="font-size: 30px;">
+        <a class="nav-link text-dark" routerLink="/cart/1" href="#">
+          <i class="bi bi-bag-check-fill" style="width: 700px;" ></i><small style="font-style:.8rem;"><sup>{{ItemCount()}}</sup></small>
+        </a>
+      </li>
+      <ng-container *ngIf="!isAuthenticated()">
+        <li class="nav-item active">
+          <a class="nav-link text-dark" routerLink="/login" href="#">Login</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link text-dark" routerLink="/register" href="#">Register</a>
+        </li>
+      </ng-container>
+      <ng-container *ngIf="isAuthenticated()">
+        <li>
+          <a class="nav-link text-dark"></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link text-dark" (click)="logout()">Logout</a>
+        </li>
+      </ng-container>
+    </ul>
+  </nav>
+  <router-outlet></router-outlet>
+</header>
+
+<footer class="pt-5 position-relative" data-bs-theme="dark">
+  <hr>  
+  <div class="container position-relative mt-5">
+      <!-- Widgets -->
+      <div class="row g-4 justify-content-between">
+          <!-- Widget 1 START -->
+          <div class="col-lg-5">
+              <!-- logo -->
+              <a href="index.html">
+                  <img class="light-mode-item h-40px" src="assets/images/logo.png" width="100px" alt="logo">
+              </a>
+              <p class="mt-1 mb-2 text-secondary text-decoration-none">A Bootstrap theme that's both stylish and functional, perfect for any type of technology or corporate website.</p>
+              <!-- Social icon -->
+              <ul class="list-inline mb-0 mt-4">
+                  <li class="list-inline-item"> <a class="btn btn-xs btn-icon btn-light" href="#"><i class="fab fa-fw fa-facebook-f lh-base"></i></a> </li>
+                  <li class="list-inline-item"> <a class="btn btn-xs btn-icon btn-light" href="#"><i class="fab fa-fw fa-instagram lh-base"></i></a> </li>
+                  <li class="list-inline-item"> <a class="btn btn-xs btn-icon btn-light" href="#"><i class="fab fa-fw fa-twitter lh-base"></i></a> </li>
+                  <li class="list-inline-item"> <a class="btn btn-xs btn-icon btn-light" href="#"><i class="fab fa-fw fa-linkedin-in lh-base"></i></a> </li>
+                  <li class="list-inline-item"> <a class="btn btn-xs btn-icon btn-light" href="#"><i class="fab fa-fw fa-youtube lh-base"></i></a> </li>
+              </ul>
+          </div>
+          <!-- Widget 1 END -->
+
+          <!-- Widget 2 START -->
+          <div class="col-lg-6 col-xxl-4">
+              <div class="row g-4">
+                  <!-- Link block -->
+                  <div class="col-6">
+                      <ul class="nav flex-column">
+                          <li class="nav-item"><a class="nav-link text-secondary text-decoration-none pt-0" href="#">About us</a></li>
+                          <li class="nav-item"><a class="nav-link text-secondary text-decoration-none" href="#">Contact us</a></li>
+                          <li class="nav-item"><a class="nav-link text-secondary text-decoration-none" href="#">Career</a></li>
+                          <li class="nav-item"><a class="nav-link text-secondary text-decoration-none" href="#">Career detail</a></li>
+                          <li class="nav-item"><a class="nav-link text-secondary text-decoration-none" href="#">Become a partner</a></li>
+                          <li class="nav-item"><a class="nav-link text-secondary text-decoration-none" href="#">Sign in</a></li>
+                          <li class="nav-item"><a class="nav-link text-secondary text-decoration-none" href="#">Sign up</a></li>
+                      </ul>
+                  </div>
+
+                  <!-- Link block -->
+                  <div class="col-6">
+                      <ul class="nav flex-column">
+                          <li class="nav-item"><a class="nav-link text-secondary text-decoration-none pt-0" href="#">Documents</a></li>
+                          <li class="nav-item"><a class="nav-link text-secondary text-decoration-none" href="#">Supports <i class="bi bi-box-arrow-up-right small ms-1"></i></a></li>
+                          <li class="nav-item"><a class="nav-link text-secondary text-decoration-none" href="faq.html">Faqs</a></li>
+                          <li class="nav-item"><a class="nav-link text-secondary text-decoration-none" href="#">Privacy Policy</a></li>
+                          <li class="nav-item"><a class="nav-link text-secondary text-decoration-none" href="blog-grid.html">News and blogs</a></li>
+                          <li class="nav-item"><a class="nav-link text-secondary text-decoration-none" href="#">Terms &amp; condition</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          <!-- Widget 2 END -->
+      </div>
+
+      <!-- Divider -->
+      <hr class="mt-4 mb-0">
+
+      <!-- Bottom footer -->
+      <div class="d-md-flex justify-content-between align-items-center text-center text-lg-start py-4">
+          <!-- copyright text -->
+          <div class="text-secondary text-decoration-none"> Copyrights ©2024 Mizzle. Build by <a href="https://www.webestica.com/" class="text-secondary">Webestica</a>. </div>
+          <!-- copyright links-->
+          <div class="nav mt-2 mt-lg-0">
+              <ul class="list-inline mx-auto mb-0">
+                  <li class="list-inline-item me-0"><a class="nav-link text-secondary text-decoration-none py-0" href="#">Privacy policy</a></li>
+                  <li class="list-inline-item me-0"><a class="nav-link text-secondary text-decoration-none py-0 pe-0" href="#">Terms &amp; conditions</a></li>
+              </ul>
+          </div>
+      </div>
+      
+  </div>
+</footer>

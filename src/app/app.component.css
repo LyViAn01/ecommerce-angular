@@ -1,0 +1,15 @@
+.crop {
+    overflow: hidden;
+}
+
+.input[type=text] {
+    width: 300px;
+    -webkit-transition: width 1sease-in-out;
+    transition: width 1sease-in-out;
+}
+
+.input[type=text]:focus {
+    width: 100%;
+}
+
+  

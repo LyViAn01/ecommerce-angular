@@ -1,0 +1,105 @@
+<div class="container">
+    <div class="text-end"><button class="btn btn-secondary mt-2 " data-bs-toggle="modal" data-bs-target="#modelId">Add new</button></div>
+<div class="row mt-3 pl-3 pr-3">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Color</th>
+                <th>Available</th>
+                <th>Price </th>
+                <th>5 Star Rating</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of productList; let i=index">
+                <td scope="row">
+                    <img src="{{item.imageUrl}}" width="50px" alt="" srcset="">
+                </td>
+                <td><a class="text-dark text-decoration-none" [routerLink]="['/product-details', item.id]">{{item.productName}}</a></td>
+                <td>{{item.color}}</td>
+                <td>{{item.releaseDate}}</td>
+                <td>{{item.price|currency:" "}} đ</td>
+                <!-- <td>{{item.starRating}}</td> -->
+                <td>
+                    <app-star [Rating]="item.starRating" [nameRating]="item.productName"
+                        (outRating)="showRating($event)"></app-star>
+                </td>
+                <td>
+                    <button class="btn btn-info me-2" (click)="Edit(i);IsAdd=0;IsUpdate=2" data-bs-toggle="modal" data-bs-target="#modelId">
+                        <i class="bi bi-pencil-square"></i>
+                    </button>
+                    <button class="btn btn-danger" (click)="Delete(i)">
+                        <i class="bi bi-trash-fill"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--Modal-->
+<div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Product
+                </h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="formProduct">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">ProductName</label><input type="text"[formControl]="formProduct.controls.productName"name=""id=""class="form-control"placeholder="tên đăng nhập"aria-describedby="helpId"><!--<smallid="helpId"class="text-muted">Helptext</small>-->
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Color</label><input type="text"[formControl]="formProduct.controls.color"name=""id=""class="form-control"placeholder="màu"aria-describedby="helpId"><!--<smallid="helpId"class="text-muted">Helptext</small>-->
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Date</label><input type="date" [formControl]="formProduct.controls.releaseDate" name="" id="" class="form-control" placeholder=""aria-describedby="helpId"><!--<smallid="helpId"class="text-muted">Helptext</small>-->
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Price</label><input type="number" [formControl]="formProduct.controls.price" name=""id="" class="form-control" placeholder=""aria-describedby="helpId"><!--<smallid="helpId"class="text-muted">Helptext</small>-->
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="">description</label><input type="text"[formControl]="formProduct.controls.description" name="" id="" class="form-control"placeholder="mô tả" aria-describedby="helpId"><!--<smallid="helpId"class="text-muted">Helptext</small>-->
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">picture</label>
+                                <input type="text" (change)="onChange($event)" name="" id="" class="form-control" placeholder="Gán link url" aria-describedby="helpId">
+                            </div>
+                            <input hidden type="text" [formControl]="formProduct.controls.imageUrl" name="" id="">
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <img [src]="file" width="30%" alt="">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button"
+                    class="btn btn-primary"*ngIf="IsAdd==1" (click)="Add()">Save</button>
+                <button type="button"
+                    class="btn btn-primary"*ngIf="IsUpdate==2" (click)="Update()">Save</button>
+                <button type="button"
+                    class="btn btn-secondary"(click)="IsAdd=1; IsUpdate=0" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

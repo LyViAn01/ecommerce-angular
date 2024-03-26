@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-lg-5">
+        <div class="card shadow-lg border-0 rounded-lg mt-5">
+            <div class="card-header justify-content-center">
+                <h3 class="fw-light my-4">Login</h3>
+            </div>
+            <div class="card-body">
+                <form (ngSubmit)="submit()" #myForm="ngForm">
+                    <div class="mb-3">
+                        <label for="" class="small mb-1">Email</label>
+                        <input class="form-control" type="email" [(ngModel)]="form.email" name="email" id="email" 
+                        placeholder="Email Address" #email="ngModel" aria-describedby="helpId" required>
+                        <small *ngIf="email.invalid&&(email.touched||email.dirty)" id="helpId" class="text-danger">Email fieldmust
+                            be valid</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="small mb-1">Password</label>
+                        <input class="form-control"type="password" [(ngModel)]="form.password" minlength="3" name="pass" id="pass" autoComplete="on"
+                        placeholder="Password" #pass="ngModel" aria-describedby="helpId" required>
+                        <small *ngIf="pass.invalid&&(pass.touched||pass.dirty)" id="helpId" class="alert">
+                            <small *ngIf="pass.errors?.['required']" id="helpId" class="text-danger">Password fieldmust be
+                                valid</small>
+                            <small *ngIf="pass.errors?.['minlength']" id="helpId" class="text-danger">Pass must be at least
+                                8characterslong.</small>
+                        </small>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="" id="">
+                            <label for="" class="form-check-label">Remember Password</label>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                        <a href="" class="small">Forgot Password</a>
+                        <button type="submit" [disabled]="myForm.form.invalid" class="btn btn-primary">
+                            <ng-container>Login</ng-container>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center">
+                <a href="" class="small">Need an account? Sign up!</a>
+            </div>
+        </div>
+    </div>
+</div>
